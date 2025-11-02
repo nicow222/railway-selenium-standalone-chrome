@@ -1,0 +1,11 @@
+[build]
+builder = "DOCKERFILE"
+
+[deploy]
+numReplicas = 1
+startCommand = "/app/app/start.sh"
+restartPolicyType = "ON_FAILURE"
+
+[resources]
+cpu = 8
+memoryMB = 8192
