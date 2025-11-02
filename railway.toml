@@ -3,7 +3,7 @@ builder = "DOCKERFILE"
 
 [deploy]
 numReplicas = 1
-startCommand = "/app/app/start.sh"
+startCommand = "/app/start.sh"
 restartPolicyType = "ON_FAILURE"
 
 [resources]
