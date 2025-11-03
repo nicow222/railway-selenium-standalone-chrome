@@ -7,9 +7,18 @@ PORT=${PORT:-4444}
 echo "🚀 Iniciando Selenium Standalone Chrome..."
 echo "📡 Puerto: $PORT"
 
-# Iniciar Selenium Grid en el puerto especificado
-exec java -jar /opt/selenium/selenium-server.jar standalone \
+# Crear directorio /dev/shm si no existe (para memoria compartida)
+mkdir -p /dev/shm
+chmod 1777 /dev/shm
+
+# Iniciar Selenium Grid con configuraciones optimizadas para Chrome
+exec java \
+  -Xmx6g \
+  -Xms2g \
+  -jar /opt/selenium/selenium-server.jar standalone \
   --port $PORT \
   --host 0.0.0.0 \
-  --max-sessions 10 \
-  --session-timeout 300
+  --max-sessions 5 \
+  --session-timeout 600 \
+  --timeout 300 \
+  --no-vnc
