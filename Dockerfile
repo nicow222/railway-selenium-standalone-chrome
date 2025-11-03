@@ -4,14 +4,11 @@ FROM selenium/standalone-chrome:latest
 USER root
 WORKDIR /app
 
-# Instalar dependencias necesarias para Chrome
+# Instalar solo dependencias esenciales que falten
 RUN apt-get update && apt-get install -y \
-    libxss1 \
-    libappindicator1 \
-    libindicator7 \
-    fonts-liberation \
-    xdg-utils \
+    wget \
     ca-certificates \
+    --no-install-recommends \
     && rm -rf /var/lib/apt/lists/*
 
 # Copiar solo el script de inicio
