@@ -11,7 +11,7 @@ echo "📡 Puerto: $PORT"
 mkdir -p /dev/shm
 chmod 1777 /dev/shm
 
-# Iniciar Selenium Grid con configuraciones optimizadas para Chrome
+# Iniciar Selenium Grid con configuraciones optimizadas
 exec java \
   -Xmx6g \
   -Xms2g \
@@ -21,4 +21,5 @@ exec java \
   --max-sessions 5 \
   --session-timeout 600 \
   --timeout 300 \
-  --no-vnc
+  --no-vnc \
+  --log-level INFO

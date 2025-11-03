@@ -1,20 +1,10 @@
 # Imagen base con Chrome + WebDriver ya configurados
 FROM selenium/standalone-chrome:latest
 
-USER root
 WORKDIR /app
 
-# Instalar solo dependencias esenciales que falten
-RUN apt-get update && apt-get install -y \
-    wget \
-    ca-certificates \
-    --no-install-recommends \
-    && rm -rf /var/lib/apt/lists/*
-
-# Copiar solo el script de inicio
+# Copiar script de inicio
 COPY app/start.sh /app/start.sh
-
-# Dar permisos de ejecución al script de arranque
 RUN chmod +x /app/start.sh
 
 # Puerto estándar del Selenium Grid
